@@ -220,5 +220,93 @@ Endpoints for commenting on recipes.
     - **200 OK**: Returns a list of comments.
     - **404 Not Found**: If the recipe does not exist.
 
+---
+
 ### Search Endpoint
-    - Search a recipe by recipe name or ingredient
+  - Search a recipe by recipe name or ingredient
+  - Query Parameters:
+    - q: A search query string to search for recipes by name or ingredients. The search is case-insensitive.
+
+  - Example Request:
+    ```bash
+    GET http://localhost:5000/recipes/search?q=egg
+    ```
+  - Example Response:
+    ```json
+      [
+        {
+          "id": 1,
+          "name": "Scrambled Egg",
+          "ingredients": [
+            {
+              "ingredient": "Eggs",
+              "quantity": "2",
+              "unit": "pieces"
+            },
+            {
+              "ingredient": "Salt",
+              "quantity": "10",
+              "unit": "milligrams"
+            },
+            {
+              "ingredient": "Black pepper",
+              "quantity": "1",
+              "unit": "teaspoon"
+            },
+            {
+              "ingredient": "Oil",
+              "quantity": "1",
+              "unit": "teaspoon"
+            }
+          ]
+        }
+      ]
+    ```
+
+---
+
+### Suggest Endpoint
+  - Suggest a recipe by ingredients
+  - Request Body:
+    ```json
+    {
+      "ingredients": ["ingredient1", "ingredient2", "ingredient3"]
+    }
+    ```
+  - Example Request:
+      ```json
+      {
+        "ingredients": ["eggs", "oil", "salt"]
+      }
+      ```
+  - Example Response:
+    ```json
+      [
+        {
+          "id": 1,
+          "name": "Scrambled Egg",
+          "ingredients": [
+            {
+              "ingredient": "Eggs",
+              "quantity": "2",
+              "unit": "pieces"
+            },
+            {
+              "ingredient": "Salt",
+              "quantity": "10",
+              "unit": "milligrams"
+            },
+            {
+              "ingredient": "Black pepper",
+              "quantity": "1",
+              "unit": "teaspoon"
+            },
+            {
+              "ingredient": "Oil",
+              "quantity": "1",
+              "unit": "teaspoon"
+            }
+          ]
+        }
+      ]
+    ```

@@ -2,6 +2,7 @@ from flask import Blueprint, request, jsonify
 from app.models import Recipe
 from sqlalchemy import text
 from app.extensions import db
+import json
 
 search_bp = Blueprint("search", __name__)
 
@@ -30,7 +31,7 @@ def search_recipes():
         recipes_data = [{
             "id": recipe.id,
             "name": recipe.name,
-            "ingredients": recipe.ingredients
+            "ingredients": json.loads(recipe.ingredients)
         } for recipe in recipes]
 
         return jsonify(recipes_data), 200
