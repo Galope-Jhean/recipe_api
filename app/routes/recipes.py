@@ -216,6 +216,14 @@ def delete_recipe(id):
                 403,
             )
 
+        ratings = Rating.query.filter_by(recipe_id=id).all()
+        for rating in ratings:
+            db.session.delete(rating)
+
+        comments = Comment.query.filter_by(recipe_id=id).all()
+        for comment in comments:
+            db.session.delete(comment)
+
         db.session.delete(recipe)
         db.session.commit()
 
