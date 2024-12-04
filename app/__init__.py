@@ -15,11 +15,13 @@ def create_app():
     from app.routes.recipes import recipes_bp
     from app.routes.search import search_bp
     from app.routes.suggest import suggest_bp
+    from app.routes.health import health_bp
 
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(recipes_bp, url_prefix="/recipes")
     app.register_blueprint(search_bp, url_prefix="/recipes/search")
     app.register_blueprint(suggest_bp, url_prefix="/recipes/suggest")
+    app.register_blueprint(health_bp, url_prefix="/health")
 
     with app.app_context():
         db.drop_all()
