@@ -5,6 +5,7 @@ from .config import Config
 
 def create_app():
     app = Flask(__name__)
+    app.url_map.strict_slashes = False
     app.config.from_object(Config)
 
     db.init_app(app)
@@ -12,9 +13,11 @@ def create_app():
 
     from app.routes.auth import auth_bp
     from app.routes.recipes import recipes_bp
+    from app.routes.search import search_bp
 
     app.register_blueprint(auth_bp, url_prefix="/auth")
     app.register_blueprint(recipes_bp, url_prefix="/recipes")
+    app.register_blueprint(search_bp, url_prefix="/search")
 
     with app.app_context():
         db.drop_all()

@@ -13,7 +13,10 @@ A simple API for managing recipes, ratings, and comments.
   - Rate recipes (1-5 stars).
 - **Comments**
   - Add and retrieve comments for recipes.
-
+- **Search**
+  - Search recipes by name or ingredients.
+- **Suggestions**
+  - Suggest recipes based on provided ingredients.
 
 ---
 
@@ -216,3 +219,6 @@ Endpoints for commenting on recipes.
   - **Responses**:
     - **200 OK**: Returns a list of comments.
     - **404 Not Found**: If the recipe does not exist.
+
+### Search Endpoint
+    - Search a recipe by recipe name or ingredient
